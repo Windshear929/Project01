@@ -1,8 +1,12 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour
+public class Player : Character
 {
+    [SerializeField] PhysicsMaterial2D normal;
+    [SerializeField] PhysicsMaterial2D jump;
+
     Rigidbody2D rb;
     Animator animator;
     Controls inputActions;
@@ -17,6 +21,7 @@ public class Player : MonoBehaviour
     [SerializeField] float jumpStr = 18;
 
     bool isMove;
+    public bool isAttack;
 
     void Awake()
     {
@@ -29,14 +34,17 @@ public class Player : MonoBehaviour
     void OnEnable()
     {
         inputActions.Gameplay.Jump.performed += Jump;
+        inputActions.Gameplay.Attack.performed += Attack;
         inputActions.Enable();
     }
 
     void OnDisable()
     {
         inputActions.Gameplay.Jump.performed -= Jump;
+        inputActions.Gameplay.Attack.performed -= Attack;
         inputActions.Disable();
     }
+
 
     void Start()
     {
@@ -56,9 +64,23 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        Move();
+        if (!isAttack)
+        {
+            Move();
+        }
+
+        PhysicMaterialSwap();
     }
 
+    private void PhysicMaterialSwap()
+    {
+        if (physicsCheck.isGround)
+        rb.sharedMaterial = normal;
+        else
+        rb.sharedMaterial = jump;
+    }
+
+    #region Control
     void Move()
     {
         animator.SetBool("isMove", isMove);
@@ -108,5 +130,19 @@ public class Player : MonoBehaviour
         {
             rb.AddForce(Vector2.up * jumpStr, ForceMode2D.Impulse);
         }
+    }
+
+    private void Attack(InputAction.CallbackContext context)
+    {
+        isAttack = true;
+        rb.velocity = Vector2.zero;
+        animator.SetTrigger("attack");
+    }
+    #endregion
+
+    public override void TakeDamage(int damage)
+    {
+        base.TakeDamage(damage);
+        animator.SetTrigger("hit");
     }
 }

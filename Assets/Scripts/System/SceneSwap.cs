@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class SceneSwap : MonoBehaviour
 {
     const string VILLAGE = "Village";
+
     void Load(string sceneName)
     {
         SceneManager.LoadScene(sceneName);

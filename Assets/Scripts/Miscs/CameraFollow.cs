@@ -5,12 +5,12 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] Transform target;
     [SerializeField] float smoothTime;
 
-    float maxX = 56;
-    float minX = 0;
-    float maxY = 0;
-    float minY = -3;
+    [SerializeField] float maxX = 56;
+    [SerializeField] float minX = 0;
+    [SerializeField] float maxY = 0;
+    [SerializeField] float minY = -3;
 
-    void LateUpdate()
+    void Update()
     {
         if (target != null)
         {
