@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags: []
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Ground
+  - Player
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Background
+    uniqueID: 3194277261
+    locked: 0
+  - name: Further Scene
+    uniqueID: 2205807577
+    locked: 0
+  - name: Rear Scene
+    uniqueID: 3801110175
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Behind Platform
+    uniqueID: 2680847477
+    locked: 0
+  - name: Character
+    uniqueID: 1976465151
+    locked: 0
+  - name: Platform
+    uniqueID: 1061912091
+    locked: 0
+  - name: Front Scene
+    uniqueID: 1538876189
+    locked: 0
