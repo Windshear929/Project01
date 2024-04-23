@@ -10,7 +10,7 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] float maxY = 0;
     [SerializeField] float minY = -3;
 
-    void Update()
+    void LateUpdate()
     {
         if (target != null)
         {

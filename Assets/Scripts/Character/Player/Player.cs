@@ -7,7 +7,7 @@ public class Player : Character
     [SerializeField] PhysicsMaterial2D normal;
     [SerializeField] PhysicsMaterial2D jump;
 
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
     Animator animator;
     Controls inputActions;
     PhysicsCheck physicsCheck;
@@ -31,8 +31,9 @@ public class Player : Character
         inputActions = new Controls();
     }
 
-    void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         inputActions.Gameplay.Jump.performed += Jump;
         inputActions.Gameplay.Attack.performed += Attack;
         inputActions.Enable();
